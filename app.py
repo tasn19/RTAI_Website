@@ -1,20 +1,15 @@
 # webpage code modified from https://towardsdatascience.com/build-a-web-application-for-predicting-apple-leaf-diseases-using-pytorch-and-flask-413f9fa9276a
 from flask import Flask, request, render_template, redirect, flash, jsonify
 from werkzeug.utils import secure_filename
-import sys
-
 
 import torch
 import io
 from torchvision import transforms
 
 from PIL import Image
-sys.path.insert(1, "D:\Programming\RTAI\RTAI")
 from C19Xception import C19Xception
 from data import MyTopCropTransform
 
-
-import os
 
 app = Flask(__name__)
 
