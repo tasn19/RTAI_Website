@@ -33,6 +33,45 @@ function setImg(i){
 
 	image.onload = function() {
         drawImg();
+
+        loadAnnotations(i);
+    }
+}
+
+function loadAnnotations(i){
+    dataToSend = {'imageName': images[i]};
+    dataToSend = JSON.stringify(dataToSend);
+    console.log("here")
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:8000/annotations",
+        data: dataToSend,
+        contentType: "application/json",
+        success:function(data){
+            console.log('success');
+            console.log(data);
+            console.log(JSON.parse(data));
+            all_polygons = JSON.parse(data);
+            drawAnnotations();
+        }
+    }).done(function(){
+        console.log("annotations done")
+    });
+}
+
+function drawAnnotations(){
+    console.log("draw Annotations")
+    console.log(all_polygons)
+    context.lineWidth=2;
+    context.strokeStyle='blue';
+    for (coords of all_polygons){
+        context.beginPath();
+        context.moveTo(coords[0].x, coords[0].y);
+        for (index = 1; index< coords.length; index= index + 1){
+            context.lineTo(coords[index].x, coords[index].y);
+            context.stroke();
+        }
+        context.closePath();
     }
 }
 
