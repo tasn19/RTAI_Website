@@ -4,7 +4,7 @@ import annotation_handler as an
 from flask import Flask, request, redirect, url_for, render_template
 import csv
 
-app = Flask(__name__, template_folder="./")
+app = Flask(__name__)
 
 
 @app.route('/', methods=['GET', 'POST'])
