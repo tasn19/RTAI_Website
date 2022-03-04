@@ -2,6 +2,7 @@
 from flask import Flask, request, render_template, redirect, flash, jsonify
 from werkzeug.utils import secure_filename
 
+
 import torch
 import io
 from torchvision import transforms
