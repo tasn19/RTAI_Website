@@ -4,6 +4,7 @@ import annotation_handler as an
 from flask import Flask, request, redirect, url_for, render_template
 import csv
 
+
 app = Flask(__name__)
 
 
@@ -20,6 +21,9 @@ def upload_file():
         an.update_row(im, json.dumps(vertices))
     return ''
 
+@app.route('/index')
+def home():
+    return render_template('index.html')
 
 @app.route('/annotations', methods=['POST'])
 def get_annotations():
