@@ -9,13 +9,13 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from forms import RegistrationForm, LoginForm
-# from logging import FileHandler,WARNING
+from logging import FileHandler,WARNING
 
 #from models import User TO DO: fix models.py and remove User from here
 
 app = Flask(__name__)
-# file_handler = FileHandler('errorlog.txt')
-# file_handler.setLevel(WARNING)
+file_handler = FileHandler('errorlog.txt')
+file_handler.setLevel(WARNING)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydb.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
